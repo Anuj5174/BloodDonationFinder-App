@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
+
+    <!-- Message sent by ME (right side) -->
+    <LinearLayout
+        android:id="@+id/layoutMine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:maxWidth="260dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvMineText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bubble_mine"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:maxWidth="260dp"/>
+
+        <TextView
+            android:id="@+id/tvMineTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textColor="#90A4AE"
+            android:textSize="10sp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"/>
+    </LinearLayout>
+
+    <!-- Message from OTHER person (left side) -->
+    <LinearLayout
+        android:id="@+id/layoutTheirs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:maxWidth="260dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvTheirName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#C62828"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/tvTheirsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bubble_theirs"
+            android:textColor="#212121"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:maxWidth="260dp"/>
+
+        <TextView
+            android:id="@+id/tvTheirsTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#90A4AE"
+            android:textSize="10sp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+
+</FrameLayout>

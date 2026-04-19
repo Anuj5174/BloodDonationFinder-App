@@ -41,6 +41,7 @@
         <activity android:name=".activities.ProfileActivity" android:exported="false"/>
         <activity android:name=".activities.AdminActivity" android:exported="false"/>
         <activity android:name=".activities.NotificationsActivity" android:exported="false"/>
+        <activity android:name=".activities.ChatActivity" android:exported="false"/>
 
         <!-- Google Maps API Key -->
         <meta-data

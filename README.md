@@ -1,178 +1,144 @@
-<<<<<<< HEAD
-# 🩸 Blood Donation Finder — Android Application
+# 🩸 Blood Donation Finder — Advanced Android Application
 
-**Version:** 2.0 | **Language:** Java | **IDE:** Android Studio  
-**By:** Anuj Partani (BT24CSE163) & Aditi Thakre (BT24CSE152)
-
----
-
-## 📋 Project Overview
-
-Blood Donation Finder is a real-time Android application that connects blood donors with recipients using Firebase as the backend. Built from the SRS document (March 2026). The app includes **Multilingual Support (English & Hindi)**, **ML Kit-powered Prescription Scanning (OCR)**, a **Gamified Donor Loyalty Badge System**, and **Secure In-App Chat** for privacy-first donor communication.
+**Version:** 3.5 | **Language:** Java | **Architecture:** MVC | **Environment:** Android Studio Flamingo+
+**Developed By:** Anuj Partani & Aditi Thakre
 
 ---
 
-## 🚀 Setup Instructions (Android Studio)
+## 📋 Comprehensive Project Overview
 
-### Step 1 — Open the Project
-1. Open **Android Studio** (Electric Eel / Flamingo or later)
-2. Click **File → Open**
-3. Navigate to this `BloodDonationFinder` folder and click **OK**
-4. Wait for Gradle to sync
+The **Blood Donation Finder** is a state-of-the-art real-time Android application designed to bridge the gap between blood donors and those in urgent medical need. Unlike standard donation apps, this project integrates **Machine Learning (OCR)**, **Real-time Geolocation**, and **Gamified User Engagement** to create a highly efficient life-saving ecosystem.
 
-### Step 2 — Firebase Setup (REQUIRED)
-1. Go to [https://console.firebase.google.com](https://console.firebase.google.com)
-2. Click **Add Project** → name it `BloodDonationFinder`
-3. In the project, click **Add App** → choose **Android**
-4. Enter package name: `com.blooddonation.finder`
-5. Download the `google-services.json` file
-6. **Replace** `app/google-services.json` with the downloaded file
-
-### Step 3 — Enable Firebase Services
-In your Firebase Console, enable these services:
-
-| Service | Path |
-|---|---|
-| Authentication | Authentication → Sign-in method → Enable Email/Password & Phone |
-| Realtime Database | Realtime Database → Create Database → Start in test mode |
-| Cloud Messaging | Already enabled by default |
-| Storage | Storage → Get Started |
-
-### Step 4 — Apply Database Security Rules
-1. In Firebase Console → Realtime Database → Rules tab
-2. Paste the contents of `firebase_database_rules.json`
-3. Click Publish
-
-### Step 5 — Google Maps API Key
-1. Go to [https://console.cloud.google.com](https://console.cloud.google.com)
-2. Enable **Maps SDK for Android**
-3. Create an API Key
-4. In `AndroidManifest.xml`, replace `YOUR_GOOGLE_MAPS_API_KEY_HERE` with your key
-
-### Step 6 — Build & Run
-1. Connect your Android device (or start an emulator with API 24+)
-2. Click the **▶ Run** button in Android Studio
-3. Select your device
-4. The app will build and install
+### The "Meaning" Behind the Innovations
+This app isn't just a database; it’s a proactive response system. By using **ML Kit**, we reduce the time taken to post a request. By using **Smart Compatibility**, we widen the search net. By using **Gamification**, we encourage long-term donor retention.
 
 ---
 
-## 📁 Project Structure
+## 🌟 Advanced Innovation Features (The "Wow" Factor)
+
+### 📸 1. ML-Powered Prescription Scanning (OCR)
+- **Understanding:** Users often make mistakes when typing medical terms or blood groups. We use **Google ML Kit Text Recognition** to scan physical hospital prescriptions.
+- **Meaning:** The app automatically extracts the Blood Group, Hospital Name, and Urgency from a photo, ensuring data accuracy and saving precious seconds during emergencies.
+
+### 🔒 2. Privacy-First Secure In-App Chat
+- **Understanding:** To protect privacy, users shouldn't have to share their phone numbers publicly. We built a real-time messaging system using Firebase.
+- **Meaning:** A sorted `chatId` logic (`uid1_uid2`) ensures a unique, permanent private channel between any two users, encrypted at rest within the Firebase database.
+
+### 🔬 3. Smart Blood Compatibility Logic
+- **Understanding:** Not only an exact match can save a life (e.g., O- can donate to anyone). We encoded the **WHO ABO/Rh compatibility matrix** into the Java logic.
+- **Meaning:** When a user searches for blood, they can toggle "Smart Match" to find every donor type that is biologically compatible, significantly increasing the chances of finding a donor.
+
+### 🆘 4. One-Tap SOS Emergency Broadcast
+- **Understanding:** In critical situations, searching manually is too slow. The SOS button triggers a **Critical Priority Broadcast**.
+- **Meaning:** It simultaneously creates a database entry, fires a high-priority push notification to all nearby donors, and triggers a physical haptic vibration alert on devices.
+
+### 🏥 5. Google Places: Nearby Blood Banks
+- **Understanding:** If a personal donor isn't available, the next best option is a professional facility.
+- **Meaning:** Using the **Google Places API**, the map dynamically fetches and marks real-world blood banks and hospitals within a 5km radius of the user's live location.
+
+### 🏅 6. Gamified Donor Loyalty System
+- **Understanding:** Consistent donation is key. We implemented a badge system (`Rookie` to `Diamond Saver`).
+- **Meaning:** Donors earn 50 "Loyalty Points" per donation. This psychological reward system encourages users to return, turning a one-time act into a life-long habit.
+
+---
+
+## 🏛️ System Architecture
+
+The following diagram illustrates the high-level interaction between the mobile client, the cloud backend, and external AI/Geo services.
+
+```mermaid
+graph TD
+    subgraph "Mobile Client (Android)"
+        App[Blood Donation App]
+        ML[ML Kit OCR - On Device]
+        Loc[Location Utils - Haversine]
+    end
+
+    subgraph "Firebase Cloud"
+        Auth[Firebase Auth]
+        DB[(Realtime Database)]
+        FCM[Cloud Messaging - SOS Notifications]
+        Store[Cloud Storage - Photos]
+    end
+
+    subgraph "External Google APIs"
+        Maps[Google Maps SDK]
+        Places[Google Places Nearby API]
+    end
+
+    App <--> Auth
+    App <--> DB
+    App <--> FCM
+    App <--> Store
+    App --> ML
+    App <--> Maps
+    App <--> Places
+```
+
+### Data Flow for SOS Broadcast
+1. **User** taps SOS button in **App**.
+2. **App** gets current GPS via **FusedLocation**.
+3. **App** writes high-priority record to **Firebase Database**.
+4. **Firebase Cloud Function/Service** triggers **FCM**.
+5. **Nearby Donors** receive a high-priority push notification.
+
+---
+
+## 🛠️ Technical Implementation Details
+
+### Core Technologies
+- **Backend:** Firebase Realtime Database (for 0.5s latency data sync).
+- **Authentication:** Firebase Auth (Secure Email/Password & UID management).
+- **Images:** Firebase Storage + Glide (Caching and circular image processing).
+- **Animations:** Lottie (For high-quality, lightweight UI micro-interactions).
+
+### Mathematical Logic
+- **Haversine Formula:** Used in `LocationUtils.java` to calculate the exact distance between two coordinates on a sphere (Earth), enabling the radius-based donor search (5km, 10km, etc.).
+- **Eligibility Logic:** The app prevents donors from being searched if their last donation was less than **56 days** ago, following medical safety standards.
+
+---
+
+## 📁 Project Architecture
 
 ```
 BloodDonationFinder/
 ├── app/
 │   ├── src/main/
 │   │   ├── java/com/blooddonation/finder/
-│   │   │   ├── activities/
-│   │   │   │   ├── SplashActivity.java        ← App entry, auto-login check
-│   │   │   │   ├── LoginActivity.java         ← Firebase email login
-│   │   │   │   ├── RegisterActivity.java      ← New donor registration + GPS
-│   │   │   │   ├── MainActivity.java          ← Home dashboard
-│   │   │   │   ├── SearchActivity.java        ← Search donors by blood group + radius
-│   │   │   │   ├── DonorProfileActivity.java  ← View donor, call/WhatsApp/Secure Chat
-│   │   │   │   ├── ChatActivity.java          ← Privacy-first Firebase in-app chat
-│   │   │   │   ├── MapActivity.java           ← Google Maps with donor pins
-│   │   │   │   ├── PostRequestActivity.java   ← Post blood request → triggers FCM
-│   │   │   │   ├── DonationHistoryActivity.java ← Past donations list
-│   │   │   │   ├── NotificationsActivity.java ← Open requests for donor's blood type
-│   │   │   │   ├── ProfileActivity.java       ← Edit profile, upload photo
-│   │   │   │   └── AdminActivity.java         ← Admin panel: stats + manage donors
-│   │   │   ├── adapters/
-│   │   │   │   ├── DonorAdapter.java          ← RecyclerView for donor search results
-│   │   │   │   ├── RequestAdapter.java        ← RecyclerView for blood requests
-│   │   │   │   ├── HistoryAdapter.java        ← RecyclerView for donation history
-│   │   │   │   └── AdminDonorAdapter.java     ← RecyclerView for admin user list
-│   │   │   ├── models/
-│   │   │   │   ├── Donor.java                 ← Firebase donor data model (+ badge & loyalty logic)
-│   │   │   │   ├── BloodRequest.java          ← Firebase blood request model
-│   │   │   │   └── DonationHistory.java       ← Firebase donation history model
-│   │   │   └── utils/
-│   │   │       ├── LocaleHelper.java          ← Dynamic language switching (English/Hindi)
-│   │   │       ├── LocationUtils.java         ← Haversine distance, 56-day eligibility
-│   │   │       └── MyFirebaseMessagingService.java ← FCM push notifications
+│   │   │   ├── activities/    (UI Logic: Search, Map, Chat, SOS, Profile)
+│   │   │   ├── adapters/      (Data Binding: Recycler views for chat & results)
+│   │   │   ├── models/        (Data structures: Donor, BloodRequest, ChatMessage)
+│   │   │   └── utils/         (Engine Room: Distance math, Locale, OCR logic)
 │   │   ├── res/
-│   │   │   ├── layout/                        ← All XML screen layouts
-│   │   │   ├── drawable/                      ← Icons and backgrounds
-│   │   │   ├── values/
-│   │   │   │   ├── colors.xml                 ← Blood red theme colors
-│   │   │   │   ├── strings.xml                ← Default app strings (English)
-│   │   │   │   └── themes.xml                 ← Material Design 3 theme
-│   │   │   ├── values-hi/
-│   │   │   │   └── strings.xml                ← Hindi localized strings
-│   │   │   └── mipmap-*/                      ← App launcher icons
-│   │   └── AndroidManifest.xml                ← Permissions, activities declared
-│   ├── build.gradle                           ← All dependencies (Firebase, Maps, Glide)
-│   └── google-services.json                   ← ⚠️ REPLACE WITH YOUR OWN
-├── build.gradle                               ← Root build config
-├── settings.gradle
-├── firebase_database_rules.json               ← Paste into Firebase Console
+│   │   │   ├── layout/        (XML screen layouts)
+│   │   │   ├── values/        (Strings, Colors, Themes)
+│   │   │   └── values-hi/     (Hindi Localization)
+│   │   └── AndroidManifest.xml
+│   └── build.gradle
 └── README.md
 ```
 
 ---
 
-## 🔑 Key Features Implemented
+## 🏆 Donor Badge Progression
 
-| Feature | Implementation |
-|---|---|
-| Firebase Auth | Email/Password login & registration |
-| Real-Time DB | Donor profiles, requests, history |
-| GPS Location | FusedLocationProviderClient |
-| Haversine Radius Search | LocationUtils.distanceKm() |
-| Google Maps | SupportMapFragment with colour-coded donor pins |
-| FCM Notifications | MyFirebaseMessagingService |
-| Availability Toggle | Switch → Firebase real-time update |
-| Multilingual Support | English & Hindi dynamic switch via LocaleHelper |
-| Admin Panel | Stats dashboard + donor management |
-| Donation History | Complete record per donor |
-| Profile Photo | Firebase Storage + Glide |
-| 56-Day Eligibility | LocationUtils.isEligibleToDonate() |
-| WhatsApp Contact | Intent to wa.me/ deep link |
-| **🔒 Secure In-App Chat** | Firebase Realtime DB chat between donor & requester (no phone sharing needed) |
-| **📸 ML Kit OCR Scanning** | Scan hospital prescriptions → auto-fill blood group, urgency & notes |
-| **🏅 Gamified Badge System** | Donor loyalty badges (Rookie → Diamond) + loyalty points (50 pts/donation) |
+| Badge | Donations | Points | Meaning |
+|---|---|---|---|
+| 🔰 Rookie | 0 | 0 | Just signed up to save lives. |
+| 🥉 Bronze Helper | 1+ | 50+ | First successful life saved. |
+| 🥈 Silver Lifeline | 3+ | 150+ | A consistent lifeline. |
+| 🥇 Gold Donor | 5+ | 250+ | Respected community hero. |
+| 💎 Diamond Saver | 10+ | 500+ | Elite life-saver status. |
 
 ---
 
-## 📦 Dependencies (auto-downloaded by Gradle)
+## ⚠️ Important Configuration Notes
 
-- Firebase BOM 32.7.0 (Auth, Database, Messaging, Storage, Analytics)
-- Google Maps SDK 18.2.0
-- Google Location Services 21.1.0
-- Glide 4.16.0 (image loading)
-- CircleImageView 3.1.0
-- Material Components 1.11.0
-- Lottie Animations 6.3.0
-- **Google ML Kit Text Recognition 16.0.0** (OCR prescription scanning)
+- **google-services.json:** Must be placed in `/app` directory.
+- **Places API:** Must be enabled in Google Cloud Console for "Nearby Blood Banks" to work.
+- **Map Legend:** 🔴 Available Donors | 🔵 Busy Donors | 🟣 Public Blood Banks.
 
 ---
 
-## ⚠️ Important Notes
-
-- **Minimum Android version:** API 24 (Android 7.0)
-- **google-services.json MUST be replaced** before building
-- **Google Maps API key MUST be added** in AndroidManifest.xml
-- FCM push notifications require a real device (not emulator) for testing
-- For admin access: manually set `isAdmin: true` in Firebase Realtime Database for a user's UID
-- ML Kit OCR works offline — no extra API key needed
-- In-App Chat uses Firebase path: `chats/{chatId}/messages/` — no phone number exposure
-
----
-
-## 🏅 Donor Badge Progression
-
-| Badge | Donations Required | Loyalty Points |
-|---|---|---|
-| 🔰 Rookie | 0 | 0 pts |
-| 🥉 Bronze Helper | 1+ | 50+ pts |
-| 🥈 Silver Lifeline | 3+ | 150+ pts |
-| 🥇 Gold Donor | 5+ | 250+ pts |
-| 💎 Diamond Saver | 10+ | 500+ pts |
-
----
-
-*Blood Donation Finder © 2026 | Anuj Partani & Aditi Thakre*
-=======
-# BloodDonationFinder-App
->>>>>>> 7dc54f2026fd24e1baa4f371efa21ee68a5afb6a
+*Blood Donation Finder © 2026 | Anuj Partani & Aditi Thakre*  
+*Empowering individuals to save lives through technology.*

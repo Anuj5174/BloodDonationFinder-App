@@ -94,6 +94,13 @@ public class DonorProfileActivity extends AppCompatActivity {
             intent.setData(Uri.parse(url));
             startActivity(intent);
         });
+
+        binding.btnChat.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ChatActivity.class);
+            intent.putExtra("otherUserId", donor.getUid());
+            intent.putExtra("otherUserName", donor.getName());
+            startActivity(intent);
+        });
     }
 
     @Override
