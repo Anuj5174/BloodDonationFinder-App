@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.blooddonation.finder.app-mergeDebugResources-44:/values-w320dp-land-v13/values-w320dp-land-v13.xml",
+            "map": [
+                {
+                    "source": "D:\\AndriodSDK\\caches\\transforms-3\\e2d964dff6a29b20c4dca310e5fc6880\\transformed\\material-1.11.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,110",
+                        "endColumns": "54,61",
+                        "endOffsets": "105,167"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/drawable_ic_person.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/drawable/ic_person.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_profile.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_profile.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_splash.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_register.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_main.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/raw_success_check.json.flat",
+        "source": "com.blooddonation.finder.app-main-48:/raw/success_check.json"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_donor_profile.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_donor_profile.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/raw_toggle_pulse.json.flat",
+        "source": "com.blooddonation.finder.app-main-48:/raw/toggle_pulse.json"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/raw_heartbeat.json.flat",
+        "source": "com.blooddonation.finder.app-main-48:/raw/heartbeat.json"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/drawable_ic_blood_drop.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/drawable/ic_blood_drop.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_notifications.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_notifications.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_item_request.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/item_request.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_map.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_map.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_search.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_search.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_item_admin_donor.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/item_admin_donor.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/drawable_spinner_background.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/drawable/spinner_background.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_donation_history.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_donation_history.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_item_donor.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/item_donor.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_post_request.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_post_request.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_admin.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_admin.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_activity_login.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.blooddonation.finder.app-merged_res-46:/layout_item_history.xml.flat",
+        "source": "com.blooddonation.finder.app-main-48:/layout/item_history.xml"
+    }
+]

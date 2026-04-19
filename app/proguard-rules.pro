@@ -1,0 +1,4 @@
+-keep class com.blooddonation.finder.models.** { *; }
+-keep class com.google.firebase.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*

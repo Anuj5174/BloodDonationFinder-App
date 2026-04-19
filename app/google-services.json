@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "667116137746",
+    "project_id": "blooddonationfinder-a9e73",
+    "storage_bucket": "blooddonationfinder-a9e73.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667116137746:android:5e9a049e487065e33597cb",
+        "android_client_info": {
+          "package_name": "com.blooddonation.finder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOPeeuZmcqxsGH9zh6pGhbPASlO3v-v8g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
