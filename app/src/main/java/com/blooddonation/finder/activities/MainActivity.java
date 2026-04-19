@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
+import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -14,6 +16,7 @@ import com.google.firebase.database.*;
 import com.blooddonation.finder.R;
 import com.blooddonation.finder.databinding.ActivityMainBinding;
 import com.blooddonation.finder.models.Donor;
+import com.blooddonation.finder.models.BloodRequest;
 import com.blooddonation.finder.utils.LocaleHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         loadUserProfile();
+        loadLiveStats();
         setupClickListeners();
     }
 
@@ -94,6 +98,20 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
 
+        // Feature 3: SOS Emergency Mode
+        binding.btnSOS.setOnClickListener(v -> {
+            if (currentDonor == null) {
+                Toast.makeText(this, "Profile not loaded yet, please wait.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            new AlertDialog.Builder(this)
+                .setTitle("🆘 SOS Emergency")
+                .setMessage("This will broadcast an URGENT blood request to ALL donors near you matching your blood type (" + currentDonor.getBloodGroup() + "). Continue?")
+                .setPositiveButton("BROADCAST NOW", (d, w) -> triggerSOSEmergency())
+                .setNegativeButton("Cancel", null)
+                .show();
+        });
+
         binding.switchAvailability.setOnCheckedChangeListener((btn, isChecked) -> {
             String uid = mAuth.getCurrentUser().getUid();
             mDatabase.child("donors").child(uid).child("available").setValue(isChecked);
@@ -111,6 +129,70 @@ public class MainActivity extends AppCompatActivity {
             // 📳 Haptic feedback
             triggerHapticFeedback(isChecked);
         });
+    }
+
+    // ─── Feature 2: Live Dashboard Stats ───────────────────────────────────
+    private void loadLiveStats() {
+        // Total donors — live
+        mDatabase.child("donors").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                long total = 0, available = 0;
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    total++;
+                    Boolean avail = ds.child("available").getValue(Boolean.class);
+                    if (Boolean.TRUE.equals(avail)) available++;
+                }
+                binding.tvStatTotalDonors.setText(String.valueOf(total));
+                binding.tvStatAvailable.setText(String.valueOf(available));
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {}
+        });
+
+        // Open requests — live
+        mDatabase.child("blood_requests").orderByChild("status").equalTo("OPEN")
+            .addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    binding.tvStatOpenRequests.setText(String.valueOf(snapshot.getChildrenCount()));
+                }
+                @Override
+                public void onCancelled(DatabaseError error) {}
+            });
+    }
+
+    // ─── Feature 3: SOS Emergency Broadcast ──────────────────────────────────
+    private void triggerSOSEmergency() {
+        if (currentDonor == null) return;
+        String uid = mAuth.getCurrentUser().getUid();
+        BloodRequest sos = new BloodRequest(
+            uid,
+            currentDonor.getName(),
+            currentDonor.getPhone(),
+            currentDonor.getBloodGroup(),
+            currentDonor.getCity(),
+            currentDonor.getLatitude(),
+            currentDonor.getLongitude(),
+            "SOS Emergency",
+            "CRITICAL"
+        );
+        sos.setNotes("⚠️ SOS — Emergency broadcast from app");
+        String key = mDatabase.child("blood_requests").push().getKey();
+        sos.setRequestId(key);
+        mDatabase.child("blood_requests").child(key).setValue(sos)
+            .addOnSuccessListener(unused -> {
+                Toast.makeText(this, "🆘 SOS Broadcast sent! Donors are being notified.", Toast.LENGTH_LONG).show();
+                // Haptic for emergency
+                if (vibrator != null && vibrator.hasVibrator()) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createWaveform(
+                            new long[]{0, 200, 100, 200, 100, 400}, -1));
+                    }
+                }
+            })
+            .addOnFailureListener(e ->
+                Toast.makeText(this, "SOS Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     /**

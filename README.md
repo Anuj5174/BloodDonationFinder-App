@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🩸 Blood Donation Finder — Android Application
 
 **Version:** 2.0 | **Language:** Java | **IDE:** Android Studio  
@@ -172,3 +173,6 @@ BloodDonationFinder/
 ---
 
 *Blood Donation Finder © 2026 | Anuj Partani & Aditi Thakre*
+=======
+# BloodDonationFinder-App
+>>>>>>> 7dc54f2026fd24e1baa4f371efa21ee68a5afb6a

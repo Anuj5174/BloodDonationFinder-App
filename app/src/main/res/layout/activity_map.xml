@@ -9,6 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <!-- Nearby Blood Banks FAB (Feature 5) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBloodBanks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="80dp"
+        android:src="@android:drawable/ic_menu_search"
+        android:backgroundTint="#D32F2F"
+        android:tint="@color/white"
+        android:contentDescription="Nearby Blood Banks"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
