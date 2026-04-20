@@ -32,17 +32,17 @@
     <string name="already_have_account">Already have an account? </string>
 
     <!-- Main Dashboard -->
-    <string name="hello_greeting">Hello! 👋</string>
+    <string name="hello_greeting">Hello!</string>
     <string name="donations_label">Donations</string>
     <string name="available_to_donate">🟢 Available to donate</string>
     <string name="not_available_to_donate">🔴 Not available</string>
     <string name="quick_actions">Quick Actions</string>
-    <string name="search_donors">🔍 Search Donors</string>
-    <string name="post_request_btn">🆘 Post Request</string>
-    <string name="map_view">🗺️ Map View</string>
-    <string name="notifications_btn">🔔 Requests</string>
-    <string name="history_btn">📋 History</string>
-    <string name="profile_btn">👤 Profile</string>
+    <string name="search_donors">Search Donors</string>
+    <string name="post_request_btn">Post Request</string>
+    <string name="map_view">Map View</string>
+    <string name="notifications_btn">Requests</string>
+    <string name="history_btn">History</string>
+    <string name="profile_btn">Profile</string>
     <string name="admin_panel">⚙️ Admin Panel</string>
 
     <!-- Search -->
@@ -51,6 +51,7 @@
     <string name="search_btn">🔍 Search</string>
     <string name="map_btn">🗺️ Map</string>
     <string name="no_donors_found">No available donors found.\nTry expanding your search radius.</string>
+    <string name="found_donors">Found %d donors</string>
     <string name="use_my_location">📍 Use My Location</string>
     <string name="get_location">Get My Location</string>
 

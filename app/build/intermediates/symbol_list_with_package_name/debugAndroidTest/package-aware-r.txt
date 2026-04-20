@@ -1,3 +1,0 @@
-com.blooddonation.finder.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

@@ -32,17 +32,17 @@
     <string name="already_have_account">पहले से खाता है? </string>
 
     <!-- Main Dashboard -->
-    <string name="hello_greeting">नमस्ते! 👋</string>
+    <string name="hello_greeting">नमस्ते!</string>
     <string name="donations_label">रक्तदान</string>
     <string name="available_to_donate">🟢 रक्तदान के लिए उपलब्ध</string>
     <string name="not_available_to_donate">🔴 उपलब्ध नहीं</string>
     <string name="quick_actions">त्वरित कार्य</string>
-    <string name="search_donors">🔍 दाता खोजें</string>
-    <string name="post_request_btn">🆘 अनुरोध करें</string>
-    <string name="map_view">🗺️ मानचित्र</string>
-    <string name="notifications_btn">🔔 अनुरोध</string>
-    <string name="history_btn">📋 इतिहास</string>
-    <string name="profile_btn">👤 प्रोफ़ाइल</string>
+    <string name="search_donors">दाता खोजें</string>
+    <string name="post_request_btn">अनुरोध करें</string>
+    <string name="map_view">मानचित्र</string>
+    <string name="notifications_btn">अनुरोध</string>
+    <string name="history_btn">इतिहास</string>
+    <string name="profile_btn">प्रोफ़ाइल</string>
     <string name="admin_panel">⚙️ एडमिन पैनल</string>
 
     <!-- Search -->
@@ -51,6 +51,7 @@
     <string name="search_btn">🔍 खोजें</string>
     <string name="map_btn">🗺️ मानचित्र</string>
     <string name="no_donors_found">कोई उपलब्ध दाता नहीं मिला।\nअपना खोज दायरा बढ़ाकर देखें।</string>
+    <string name="found_donors">%d दाता मिले</string>
     <string name="use_my_location">📍 मेरा स्थान उपयोग करें</string>
     <string name="get_location">मेरा स्थान प्राप्त करें</string>
 

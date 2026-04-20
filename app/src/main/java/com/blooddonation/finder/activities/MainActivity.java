@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 currentDonor = snapshot.getValue(Donor.class);
                 if (currentDonor != null) {
                     binding.tvWelcome.setText(
-                        getString(R.string.hello_greeting).replace("!", ", " + currentDonor.getName() + "! 👋"));
+                        getString(R.string.hello_greeting).replace("!", ", " + currentDonor.getName() + "!"));
                     binding.tvBloodGroup.setText(currentDonor.getBloodGroup());
                     binding.tvDonationCount.setText(String.valueOf(currentDonor.getDonationCount()));
                     binding.switchAvailability.setChecked(currentDonor.isAvailable());
