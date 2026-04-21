@@ -59,7 +59,7 @@ graph TD
         DB[(Realtime Database)]
         FCM[Cloud Messaging - SOS Notifications]
         Store[Cloud Storage - Photos]
-    end
+    end;
 
     subgraph "External Google APIs"
         Maps[Google Maps SDK]
